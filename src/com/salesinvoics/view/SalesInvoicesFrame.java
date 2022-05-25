@@ -67,12 +67,21 @@ public class SalesInvoicesFrame extends javax.swing.JFrame {
 
         invoiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-
+                "No.", "Date", "Customer Name", "Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(invoiceTable);
 
         createInvoiceButton.setText("Create New Invoice");
@@ -89,12 +98,21 @@ public class SalesInvoicesFrame extends javax.swing.JFrame {
 
         lineTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-
+                "No.", "Item Name", "Item Price", "Item Count", "Item Total"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(lineTable);
 
         createLineButton.setText("Create New Item");

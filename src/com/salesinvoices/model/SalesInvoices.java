@@ -20,11 +20,15 @@ public class SalesInvoices {
 
     public double getInvoiceTotal() {
         double total = 0.0;
+        if(lines == null)  { total = 0.0;}
+        else
+        {
         for (Line line : getLines()) {
             total += line.getLineTotal();
         }
-        return total;
     }
+                return total;
+    }   
     
     public ArrayList<Line> getLines() {
         if (lines == null) {
